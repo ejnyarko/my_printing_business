@@ -17,8 +17,8 @@
             --accent-secondary: #ff007a; /* Cyber Pink */
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --glass-bg: rgba(13, 9, 24, 0.75);
-            --glass-border: rgba(255, 107, 0, 0.1);
+            --glass-bg: rgba(13, 9, 24, 0.85);
+            --glass-border: rgba(255, 107, 0, 0.2);
             --gradient-main: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
         }
 
@@ -35,9 +35,10 @@
             color: var(--text-main);
             overflow-x: hidden;
             line-height: 1.7;
+            position: relative;
         }
 
-        /* High-Aesthetic Atmospheric Background Glows */
+        /* Fixed Background Image Layer with Dark Overlay for Contrast */
         body::before {
             content: '';
             position: fixed;
@@ -45,10 +46,27 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
-                radial-gradient(circle at 15% 15%, rgba(255, 107, 0, 0.08) 0%, transparent 45%),
-                radial-gradient(circle at 85% 75%, rgba(255, 0, 122, 0.06) 0%, transparent 50%);
+            background-image: linear-gradient(to bottom, rgba(3, 2, 7, 0.88), rgba(10, 7, 20, 0.93)), url('image_af7dbe.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
             z-index: -2;
+            pointer-events: none;
+        }
+
+        /* Atmospheric Accent Glows */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 15% 15%, rgba(255, 107, 0, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 85% 75%, rgba(255, 0, 122, 0.08) 0%, transparent 55%);
+            z-index: -1;
             pointer-events: none;
         }
 
@@ -58,14 +76,14 @@
             justify-content: space-between;
             align-items: center;
             padding: 1.25rem 7%;
-            background: rgba(3, 2, 7, 0.8);
+            background: rgba(3, 2, 7, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .logo {
@@ -149,18 +167,6 @@
             position: relative;
         }
 
-        .hero-glow {
-            position: absolute;
-            top: 30%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(255, 107, 0, 0.1) 0%, rgba(255, 0, 122, 0.03) 60%, transparent 100%);
-            filter: blur(70px);
-            z-index: -1;
-        }
-
         .hero h1 {
             font-family: 'Space Grotesk', sans-serif;
             font-size: 4.75rem;
@@ -178,9 +184,10 @@
 
         .hero p {
             font-size: 1.25rem;
-            color: var(--text-muted);
+            color: var(--text-main);
             max-width: 680px;
             margin: 0 auto 3.5rem auto;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
 
         /* Buttons Aesthetic */
@@ -206,21 +213,21 @@
 
         .btn-secondary {
             display: inline-block;
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.05);
             color: var(--text-main);
             padding: 1.1rem 2.75rem;
             border-radius: 8px;
             font-weight: 600;
             font-size: 0.95rem;
             text-decoration: none;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(8px);
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             cursor: pointer;
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.07);
+            background: rgba(255, 255, 255, 0.1);
             border-color: var(--accent-primary);
             transform: translateY(-2px);
         }
@@ -237,8 +244,8 @@
             border: 1px solid var(--glass-border);
             border-radius: 20px;
             overflow: hidden;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -246,7 +253,7 @@
             width: 100%;
             height: 220px;
             object-fit: cover;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             transition: transform 0.5s ease;
         }
 
@@ -260,8 +267,8 @@
 
         .service-card:hover {
             transform: translateY(-8px);
-            border-color: rgba(255, 107, 0, 0.3);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 40px rgba(255, 107, 0, 0.05);
+            border-color: rgba(255, 107, 0, 0.5);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 40px rgba(255, 107, 0, 0.1);
         }
 
         .service-icon {
@@ -298,7 +305,7 @@
             border: 1px solid var(--glass-border);
             padding: 3.5rem 2.5rem;
             border-radius: 20px;
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(16px);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -308,17 +315,17 @@
 
         .price-card:hover {
             transform: translateY(-5px);
-            border-color: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.25);
         }
 
         .price-card.featured {
-            border-color: rgba(255, 107, 0, 0.4);
-            box-shadow: 0 10px 35px rgba(255, 107, 0, 0.08);
+            border-color: rgba(255, 107, 0, 0.5);
+            box-shadow: 0 10px 35px rgba(255, 107, 0, 0.12);
             position: relative;
         }
 
         .price-card.featured:hover {
-            box-shadow: 0 20px 50px rgba(255, 107, 0, 0.2);
+            box-shadow: 0 20px 50px rgba(255, 107, 0, 0.25);
             border-color: var(--accent-primary);
         }
 
@@ -399,7 +406,7 @@
             width: 100%;
             height: 100%;
             border: 0;
-            filter: grayscale(0.9) invert(0.93) contrast(1.2) hue-rotate(240deg); /* Modern Sunset Matrix Theme Map styling Overlay */
+            filter: grayscale(0.9) invert(0.93) contrast(1.2) hue-rotate(240deg);
         }
 
         /* High Aesthetic Form Integration */
@@ -429,8 +436,8 @@
 
         .form-control {
             width: 100%;
-            background-color: rgba(3, 2, 7, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background-color: rgba(3, 2, 7, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             padding: 1.1rem 1.25rem;
             border-radius: 8px;
             color: var(--text-main);
@@ -442,7 +449,7 @@
             outline: none;
             border-color: var(--accent-primary);
             background-color: rgba(3, 2, 7, 0.9);
-            box-shadow: 0 0 20px rgba(255, 107, 0, 0.15);
+            box-shadow: 0 0 20px rgba(255, 107, 0, 0.25);
         }
 
         .btn-submit {
@@ -469,6 +476,7 @@
             text-align: center;
             padding: 4rem 2rem;
             border-top: 1px solid var(--glass-border);
+            background: rgba(3, 2, 7, 0.9);
             color: var(--text-muted);
             font-size: 0.9rem;
             letter-spacing: 0.5px;
@@ -504,7 +512,6 @@
 
     <!-- Main Hero Block -->
     <main class="hero">
-        <div class="hero-glow"></div>
         <h1>High-Fidelity Press & Digital <span>Production Systems</span></h1>
         <p>Your premium print partner near campus. Specializing in hardbound academic printing, corporate rebranding, and high-volume promotional materials.</p>
         <div style="display: flex; gap: 1.25rem; justify-content: center;">
